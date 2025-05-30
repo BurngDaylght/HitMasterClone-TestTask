@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class GameState : MonoBehaviour
 {
-    public GameStatus CurrentState; // TODO: make get set
+    public GameStatus CurrentState;
 
     public event Action OnGameStarted;
     public event Action OnGameFinished;

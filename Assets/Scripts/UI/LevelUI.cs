@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
+using DG.Tweening;
 
 public class LevelUI : MonoBehaviour
 {
@@ -18,13 +19,11 @@ public class LevelUI : MonoBehaviour
     private void OnEnable()
     {
         _gameState.OnGameStarted += HideStartUI;
-        _gameState.OnGameFinished += ShowResultUI;
     }
     
     private void OnDisable()
     {
         _gameState.OnGameStarted -= HideStartUI;
-        _gameState.OnGameFinished -= ShowResultUI;
     }
 
 
@@ -41,12 +40,9 @@ public class LevelUI : MonoBehaviour
 
     private void HideStartUI()
     {
-        // TOOD: animation
-        _startGameText.gameObject.SetActive(false);
-    }
-    
-    private void ShowResultUI()
-    {
-        // TOOD: animation
+        _startGameText.transform.DOScale(0f, 0.3f).SetEase(Ease.InBack).OnComplete(() =>
+        {
+            _startGameText.gameObject.SetActive(false);
+        });
     }
 }
