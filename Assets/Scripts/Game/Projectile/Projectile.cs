@@ -31,6 +31,6 @@ public class Projectile : MonoBehaviour
             damageable.TakeDamage(_damage);
         }
 
-        Destroy(gameObject);
+        ReturnToPool();
     }
 }
